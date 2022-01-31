@@ -20,6 +20,7 @@ sudo apt install -y fonts-cascadia-code
 cd Downloads/
 wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
 sudo apt install ./google-chrome-stable_current_amd64.deb
+rm google-chrome-stable_current_amd64.deb
 cd ~/
 
 # Firefox
@@ -55,6 +56,7 @@ sudo apt install -y python3 pip3
 cd Downloads/
 wget -O ~/discord.deb "https://discordapp.com/api/download?platform=linux&format=deb"
 sudo gdebi ~/discord.deb
+rm discord.deb
 cd ~/
 
 # NodeJS
