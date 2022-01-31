@@ -2,10 +2,10 @@
 
 # Basic Utilities
 
-cd ~
+cd ~/
 sudo apt install update
 sudo apt install upgrade
-sudo apt install -yy htop gdebi preload synaptic obs-studio chrome-gnome-shell dconf-editor cmatrix git vlc virt-manager cava ranger gdebi-core wget vim curl zsh steam
+sudo apt install -yy htop gdebi preload synaptic obs-studio chrome-gnome-shell dconf-editor cmatrix git vlc virt-manager cava ranger gdebi-core wget vim curl steam
 
 # Codecs and MS Fonts
 
@@ -75,14 +75,18 @@ sudo apt-get install -y nodejs
 
 sudo snap install wonderwall
 
-# Zsh Default Shell
+# # Zsh Shell
 
-chsh -s $(which zsh)
+# sudo apt install zsh
 
-# Zsh Plugins
+# # Zsh Default Shell
 
-git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
-git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
+# chsh -s $(which zsh)
+
+# # Zsh Plugins
+
+# git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
+# git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
 
 # OhMyZsh
 
