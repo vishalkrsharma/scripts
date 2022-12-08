@@ -1,5 +1,17 @@
 #!/bin/bash
 
+# Unsnap Firefox
+
+sudo snap remove firefox
+sudo add-apt-repository ppa:mozillateam/ppa -y
+echo '
+Package: *
+Pin: release o=LP-PPA-mozillateam
+Pin-Priority: 1001
+' | sudo tee /etc/apt/preferences.d/mozilla-firefox
+echo 'Unattended-Upgrade::Allowed-Origins:: "LP-PPA-mozillateam:${distro_codename}";' | sudo tee /etc/apt/apt.conf.d/51unattended-upgrades-firefox
+sudo apt install firefox
+
 # Basic Utilities
 
 cd ~/
@@ -15,19 +27,6 @@ sudo apt install -y ubuntu-restricted-extras ubuntu-restricted-addons
 
 sudo apt install -y fonts-cascadia-code
 
-# Google Chrome
-
-cd Downloads/
-wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
-sudo apt install ./google-chrome-stable_current_amd64.deb
-rm google-chrome-stable_current_amd64.deb
-cd ~/
-
-# Firefox
-
-sudo snap remove firefox
-sudo apt install -y firefox
-
 # Visual Studio Code
 
 wget -qO- https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > packages.microsoft.gpg
@@ -38,18 +37,13 @@ sudo apt install apt-transport-https
 sudo apt update
 sudo apt install code
 
-# Regolith Linux
-
-sudo add-apt-repository ppa:regolith-linux/release -y
-sudo apt install -y regolith-desktop-standard
-
 # Java
 
 sudo apt install -y default-jdk default-jdk-doc default-jdk-headless default-jre default-jre-headless
 
 # Python
 
-sudo apt install -y python3 pip3
+sudo apt install -y python3 python3-pip
 
 # Discord
 
@@ -61,8 +55,20 @@ cd ~/
 
 # NodeJS
 
-curl -fsSL https://deb.nodesource.com/setup_lts.x | sudo -E bash -
-sudo apt-get install -y nodejs
+curl -sL https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.0/install.sh -o install_nvm.sh
+bash install_nvm.sh
+export NVM_DIR="$HOME/.nvm"
+  [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+  [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+source ~/.bash_profile
+command -v nvm
+nvm install --lts
+
+# Spotify
+
+curl -sS https://download.spotify.com/debian/pubkey_5E3C45D7B312C643.gpg | sudo apt-key add - 
+echo "deb http://repository.spotify.com stable non-free" | sudo tee /etc/apt/sources.list.d/spotify.list
+sudo apt-get update && sudo apt-get install spotify-client -y
 
 # Wonderwall
 
